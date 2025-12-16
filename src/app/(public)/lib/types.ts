@@ -23,7 +23,10 @@ export interface CategoryProduct {
   stock?: number;
 }
 
-// src/lib/types.ts (optional, or just in InstagramFeed.tsx)
+export interface ParentCategory extends CategoryProduct {
+  hoverImage: string;
+}
+
 export interface InstagramPost {
   id: string;
   image: string;
