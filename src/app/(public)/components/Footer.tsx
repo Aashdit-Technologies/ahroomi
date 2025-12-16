@@ -90,7 +90,7 @@ export default function Footer() {
             <h4 className="font-semibold text-xl mb-6 text-gray-900 ">Company</h4>
             <ul className="space-y-4 text-gray-700">
               <li className="hover:text-[#22a6dd] transition-colors cursor-pointer">
-                What we do
+                What We Do
               </li>
               <li className="hover:text-[#22a6dd] transition-colors cursor-pointer">
                 Gift Offers
@@ -99,7 +99,7 @@ export default function Footer() {
                 Latest Posts
               </li>
               <li className="hover:text-[#22a6dd] transition-colors cursor-pointer">
-                F.A.Q
+                FAQs
               </li>
             </ul>
           </div>
@@ -116,10 +116,10 @@ export default function Footer() {
                 </div>
                 <div>
                   <a
-                    href="tel:+911234567890"
+                    href="tel:+918327729174"
                     className="hover:text-[#22a6dd] transition-colors"
                   >
-                    +91 12345 67890
+                    +91-8327729174
                   </a>
                 </div>
               </li>
@@ -130,10 +130,10 @@ export default function Footer() {
                 </div>
                 <div>
                   <a
-                    href="mailto:support@ahroomi.com"
+                    href="mailto: ahroomi@aashdit.com"
                     className="hover:text-[#22a6dd] transition-colors"
                   >
-                    support@ahroomi.com
+                     ahroomi@aashdit.com
                   </a>
                 </div>
               </li>
@@ -144,12 +144,12 @@ export default function Footer() {
                 </div>
                 <div>
                   <a
-                    href="https://www.ahroomi.com"
+                    href="https://aashditnutritech.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-[#22a6dd] transition-colors"
                   >
-                    www.ahroomi.com
+                    www.aashditnutritech.com
                   </a>
                 </div>
               </li>
@@ -163,9 +163,9 @@ export default function Footer() {
         {/* BOTTOM SECTION */}
         <div className="flex flex-col lg:flex-row items-center justify-between pt-3 text-gray-700">
           <div className="text-center lg:text-left mb-6 lg:mb-0">
-            <p className="text-sm">
+            <p className="text-xs">
               © Copyright 2025{" "}
-              <span className="font-bold text-gray-900">Ahroomi</span> | Design
+              <span className="font-bold text-gray-900">Ahroomi</span> | Developed
               By{" "}
               <span className="font-bold text-gray-900">
                 Aashdit Technologies

@@ -43,7 +43,7 @@ export default function FeaturedProducts({ items }: { items: Product[] }) {
                   <div className="relative rounded-lg overflow-hidden bg-[#f7f7f7] group">
                     {/* Discount Badge */}
                     {discount > 0 && (
-                      <div className="absolute z-20">
+                      <div className="absolute z-1">
                         <div className={styles.discountBadgeCustom}>
                           -{discount.toFixed(2)}%
                         </div>
@@ -51,10 +51,10 @@ export default function FeaturedProducts({ items }: { items: Product[] }) {
                     )}
 
                     {/* Hover Overlay with Buy Now */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10 pointer-events-none">
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-1 pointer-events-none">
                       <Link href={`/product`} passHref>
                         <button
-                          className="cursor-pointer text-black border border-[#22a6dd] font-jost font-medium px-8 py-2 rounded-full bg-white transition-all duration-500 transform scale-95 hover:scale-100 hover:bg-[#22a6dd] hover:text-white"
+                          className="pointer-events-auto text-black border border-[#22a6dd] font-jost font-medium px-8 py-2 rounded-full bg-white transition-all duration-500 transform scale-95 hover:scale-100 hover:bg-[#22a6dd] hover:text-white"
                         >
                           Buy Now
                         </button>

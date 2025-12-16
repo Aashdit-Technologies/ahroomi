@@ -158,7 +158,7 @@ export default function OffcanvasCart({ isOpen, onClose }: OffcanvasCartProps) {
           {/* Body (scrollable) */}
           <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4 bg-[#f9f9f9]">
             <div className="flex items-center justify-between">
-              <h4 className="text-[#075090] text-lg italic leading-tight">
+              <h4 className="text-[#075090] text-lg  leading-tight">
                 Product Summary
               </h4>
               <span className="text-xs bg-green-200 text-green-800  px-2 py-0.5 rounded-full font-medium">
@@ -393,35 +393,38 @@ export default function OffcanvasCart({ isOpen, onClose }: OffcanvasCartProps) {
               {/* BUTTON */}
               <button
                 onClick={handleBuyNow}
-                className="flex items-center justify-between w-full bg-[#22a6dd] text-white py-3 px-4 rounded-lg font-semibold text-base shadow"
+                className="flex items-center justify-center w-full bg-[#22a6dd] text-white py-3 px-4 rounded-lg font-semibold text-base shadow"
               >
-                <span>PLACE ORDER</span>
+                <span>Place Order
+                  
+                
+                </span>
+                  {/* Arrow */}
+                  <LiaLongArrowAltRightSolid className="text-white text-xl font-bold" />
 
                 {/* Right side icons */}
-                <div className="flex items-center ml-3">
-                  {/* Google / GPay */}
+                {/* <div className="flex items-center ml-3">
+                 
                   <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center">
                     <FcGoogle className="text-[18px]" />
                   </div>
 
-                  {/* Visa */}
+                
                   <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center -ml-1.5">
                     <FaCcVisa className="text-[18px] text-blue-700" />
                   </div>
 
-                  {/* PayPal (alternative for Paytm/PhonePe) */}
+                 
                   <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center -ml-1.5">
                     <SiPhonepe className="text-[18px] text-blue-600" />
                   </div>
 
-                  {/* PayPal (alternative for Paytm/PhonePe) */}
+                 
                   <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center -ml-1.5">
                     <SiPaytm className="text-[18px] text-blue-600" />
                   </div>
 
-                  {/* Arrow */}
-                  <LiaLongArrowAltRightSolid className="text-white text-xl font-bold" />
-                </div>
+                </div> */}
               </button>
 
               {/* Prepaid Tag */}

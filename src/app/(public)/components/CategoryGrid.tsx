@@ -6,35 +6,35 @@ import card1 from "../../../../public/assets/images/card1.webp";
 import card2 from "../../../../public/assets/images/card2.webp";
 import card3 from "../../../../public/assets/images/card3.webp";
 import card4 from "../../../../public/assets/images/card4.webp";
-// Using PNG versions for cards 5-8 since WEBP versions are missing
-import card5 from "../../../../public/assets/images/card5.png";
+import card5 from "../../../../public/assets/images/card5.webp";
 import card6 from "../../../../public/assets/images/card6.png";
 import card7 from "../../../../public/assets/images/card7.png";
 import card8 from "../../../../public/assets/images/card8.png";
 import FancyButton from "./FancyButton";
+import Link from "next/link";
 
 // Card pair configurations
 const cardPairs = [
   {
     images: [card1, card5],
     texts: ["Serums", "Serums"],
-    alt: ["Serums collection", "New serums collection"]
+    alt: ["Serums collection", "New serums collection"],
   },
   {
     images: [card2, card6],
     texts: ["Lotion", "Body Lotion"],
-    alt: ["Lotion collection", "Body lotion collection"]
+    alt: ["Lotion collection", "Body lotion collection"],
   },
   {
     images: [card3, card7],
     texts: ["Face Cream", "Premium Cream"],
-    alt: ["Face cream", "Premium face cream"]
+    alt: ["Face cream", "Premium face cream"],
   },
   {
     images: [card4, card8],
     texts: ["Cleanse", "Deep Cleanse"],
-    alt: ["Cleanse products", "Deep cleanse products"]
-  }
+    alt: ["Cleanse products", "Deep cleanse products"],
+  },
 ];
 
 export default function CategoryGrid() {
@@ -45,18 +45,18 @@ export default function CategoryGrid() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
-      
+
       // Start transition
       setTimeout(() => {
-        setCurrentIndices(prev => {
+        setCurrentIndices((prev) => {
           const newIndices = [...prev];
           // Toggle only the current card (0→1 or 1→0)
           newIndices[currentCardIndex] = prev[currentCardIndex] === 0 ? 1 : 0;
           return newIndices;
         });
-        
+
         setIsTransitioning(false);
-        
+
         // Move to next card for next change
         setCurrentCardIndex((prev) => (prev + 1) % 4);
       }, 300); // Transition duration
@@ -73,11 +73,12 @@ export default function CategoryGrid() {
           <h2 className="title">
             POPULAR <span className="title_sub">CATEGORY</span>
           </h2>
-
-          <button className="text-gray-700 hover:text-black flex items-center gap-2 view_all">
-            *View All Category
-            <span className="inline-block transform translate-y-px">→</span>
-          </button>
+          <Link href="/shop">
+            <button className="text-gray-700 hover:text-black flex items-center gap-2 view_all">
+              *View All Category
+              <span className="inline-block transform translate-y-px">→</span>
+            </button>
+          </Link>
         </div>
 
         {/* Grid Layout - EXACTLY SAME structure */}
@@ -90,7 +91,9 @@ export default function CategoryGrid() {
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className={`object-cover hover:scale-105 transition-all duration-500 ${
-                isTransitioning && currentCardIndex === 0 ? 'opacity-80 scale-[1.02]' : 'opacity-100 scale-100'
+                isTransitioning && currentCardIndex === 0
+                  ? "opacity-80 scale-[1.02]"
+                  : "opacity-100 scale-100"
               }`}
             />
             <FancyButton
@@ -99,7 +102,9 @@ export default function CategoryGrid() {
               textColor="#000"
               hoverColor="#22a6dd"
               className={`absolute bottom-16 left-1/2 -translate-x-1/2 transition-all duration-300 ${
-                isTransitioning && currentCardIndex === 0 ? 'scale-105' : 'scale-100'
+                isTransitioning && currentCardIndex === 0
+                  ? "scale-105"
+                  : "scale-100"
               }`}
             >
               {cardPairs[0].texts[currentIndices[0]]}
@@ -111,7 +116,7 @@ export default function CategoryGrid() {
             <div className="flex flex-col items-center justify-center text-center">
               <p className="text-sm text-gray-500 mb-1">Vital Categories</p>
               <h3 className="text-2xl font-semibold text-gray-800 leading-snug">
-                Worldwide Fashion <br /> Collection
+                Worldwide Fashion <br /> Collections
               </h3>
             </div>
 
@@ -123,7 +128,9 @@ export default function CategoryGrid() {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className={`object-cover hover:scale-105 transition-all duration-500 ${
-                  isTransitioning && currentCardIndex === 1 ? 'opacity-80 scale-[1.02]' : 'opacity-100 scale-100'
+                  isTransitioning && currentCardIndex === 1
+                    ? "opacity-80 scale-[1.02]"
+                    : "opacity-100 scale-100"
                 }`}
               />
               <FancyButton
@@ -132,7 +139,9 @@ export default function CategoryGrid() {
                 textColor="#000"
                 hoverColor="#22a6dd"
                 className={`absolute bottom-16 left-1/2 -translate-x-1/2 transition-all duration-300 ${
-                  isTransitioning && currentCardIndex === 1 ? 'scale-105' : 'scale-100'
+                  isTransitioning && currentCardIndex === 1
+                    ? "scale-105"
+                    : "scale-100"
                 }`}
               >
                 {cardPairs[1].texts[currentIndices[1]]}
@@ -147,7 +156,9 @@ export default function CategoryGrid() {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className={`object-cover hover:scale-105 transition-all duration-500 ${
-                  isTransitioning && currentCardIndex === 2 ? 'opacity-80 scale-[1.02]' : 'opacity-100 scale-100'
+                  isTransitioning && currentCardIndex === 2
+                    ? "opacity-80 scale-[1.02]"
+                    : "opacity-100 scale-100"
                 }`}
               />
               <FancyButton
@@ -156,7 +167,9 @@ export default function CategoryGrid() {
                 textColor="#000"
                 hoverColor="#22a6dd"
                 className={`absolute bottom-16 left-1/2 -translate-x-1/2 transition-all duration-300 ${
-                  isTransitioning && currentCardIndex === 2 ? 'scale-105' : 'scale-100'
+                  isTransitioning && currentCardIndex === 2
+                    ? "scale-105"
+                    : "scale-100"
                 }`}
               >
                 {cardPairs[2].texts[currentIndices[2]]}
@@ -171,7 +184,9 @@ export default function CategoryGrid() {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className={`object-cover hover:scale-105 transition-all duration-500 ${
-                  isTransitioning && currentCardIndex === 3 ? 'opacity-80 scale-[1.02]' : 'opacity-100 scale-100'
+                  isTransitioning && currentCardIndex === 3
+                    ? "opacity-80 scale-[1.02]"
+                    : "opacity-100 scale-100"
                 }`}
               />
               <FancyButton
@@ -180,7 +195,9 @@ export default function CategoryGrid() {
                 textColor="#000"
                 hoverColor="#22a6dd"
                 className={`absolute bottom-16 left-1/2 -translate-x-1/2 transition-all duration-300 ${
-                  isTransitioning && currentCardIndex === 3 ? 'scale-105' : 'scale-100'
+                  isTransitioning && currentCardIndex === 3
+                    ? "scale-105"
+                    : "scale-100"
                 }`}
               >
                 {cardPairs[3].texts[currentIndices[3]]}

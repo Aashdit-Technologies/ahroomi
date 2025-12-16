@@ -1,14 +1,27 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { FaStar, FaRegStar, FaStarHalfAlt, FaHeart, FaShareAlt, FaChevronLeft, FaChevronRight, FaTag, FaPercentage, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import {
+  FaStar,
+  FaRegStar,
+  FaStarHalfAlt,
+  FaHeart,
+  FaShareAlt,
+  FaChevronLeft,
+  FaChevronRight,
+  FaTag,
+  FaPercentage,
+  FaChevronDown,
+  FaChevronUp,
+} from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 
 // Import your images
-import t1 from "../../../../public/assets/images/t1.avif";
-import t2 from "../../../../public/assets/images/t2.avif";
-import t3 from "../../../../public/assets/images/t3.avif";
-import t4 from "../../../../public/assets/images/t4.avif";
+import t1 from "../../../../public/assets/images/t1.jpg";
+import t2 from "../../../../public/assets/images/t2.jpg";
+import t3 from "../../../../public/assets/images/t3.jpg";
+import t4 from "../../../../public/assets/images/t4.jpg";
+import buynow from "../../../../public/assets/images/buynow.svg";
 import PlaceorderModal from "./PlaceorderModal";
 
 export default function ProductDetails() {
@@ -17,20 +30,32 @@ export default function ProductDetails() {
   const [activeImage, setActiveImage] = useState(0);
   const [showAllOffers, setShowAllOffers] = useState(false);
   const [showOrderModal, setShowOrderModal] = useState(false);
-  
+
   const weightOptions = [
     { id: 1, weight: "25g", price: 350, originalPrice: 500, discount: "30%" },
     { id: 2, weight: "50g", price: 650, originalPrice: 850, discount: "24%" },
-    { id: 3, weight: "100g", price: 1200, originalPrice: 1500, discount: "20%" },
-    { id: 4, weight: "200g", price: 2200, originalPrice: 2800, discount: "21%" },
+    {
+      id: 3,
+      weight: "100g",
+      price: 1200,
+      originalPrice: 1500,
+      discount: "20%",
+    },
+    {
+      id: 4,
+      weight: "200g",
+      price: 2200,
+      originalPrice: 2800,
+      discount: "21%",
+    },
   ];
 
-  const selectedWeightOption = weightOptions.find(opt => opt.weight === selectedWeight) || weightOptions[0];
-
-
+  const selectedWeightOption =
+    weightOptions.find((opt) => opt.weight === selectedWeight) ||
+    weightOptions[0];
 
   const product = {
-    title: "Malai Moisturiser",
+    title: "Face Mask",
     weight: selectedWeight,
     price: selectedWeightOption.price,
     originalPrice: selectedWeightOption.originalPrice,
@@ -38,7 +63,8 @@ export default function ProductDetails() {
     rating: 4.5,
     reviews: 1,
     inStock: true,
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut",
+    description:
+      "Ahroomi Face Mask is made with pure moringa powder, packed with skin-loving vitamins like A, C, and E. These nutrients help cleanse deeply, soothe dull or tired skin.",
     sku: "BE39VGNT",
     category: "Self Care",
     tags: ["enrato", "lips"],
@@ -52,7 +78,7 @@ export default function ProductDetails() {
       terms: "T&C",
       icon: "bank",
       textColor: "text-[#00652f]",
-      iconColor: "text-[#00652f]"
+      iconColor: "text-[#00652f]",
     },
     {
       id: 2,
@@ -61,7 +87,7 @@ export default function ProductDetails() {
       terms: "T&C",
       icon: "discount",
       textColor: "text-[#00652f]",
-      iconColor: "text-[#00652f]"
+      iconColor: "text-[#00652f]",
     },
     {
       id: 3,
@@ -70,7 +96,7 @@ export default function ProductDetails() {
       terms: "T&C",
       icon: "upi",
       textColor: "text-[#00652f]",
-      iconColor: "text-[#00652f]"
+      iconColor: "text-[#00652f]",
     },
     {
       id: 4,
@@ -79,7 +105,7 @@ export default function ProductDetails() {
       terms: "T&C",
       icon: "emi",
       textColor: "text-[#00652f]",
-      iconColor: "text-[#00652f]"
+      iconColor: "text-[#00652f]",
     },
     {
       id: 5,
@@ -88,7 +114,7 @@ export default function ProductDetails() {
       terms: "T&C",
       icon: "shipping",
       textColor: "text-[#00652f]",
-      iconColor: "text-[#00652f]"
+      iconColor: "text-[#00652f]",
     },
     {
       id: 6,
@@ -97,8 +123,8 @@ export default function ProductDetails() {
       terms: "T&C",
       icon: "cashback",
       textColor: "text-[#00652f]",
-      iconColor: "text-[#00652f]"
-    }
+      iconColor: "text-[#00652f]",
+    },
   ];
 
   const images = [t1, t2, t3, t4];
@@ -106,32 +132,32 @@ export default function ProductDetails() {
   const visibleOffers = showAllOffers ? offers : offers.slice(0, 4);
 
   const handleAddToCart = () => {
-    console.log("Added to cart:", { 
-      product: product.title, 
-      weight: selectedWeight, 
+    console.log("Added to cart:", {
+      product: product.title,
+      weight: selectedWeight,
       quantity,
-      price: product.price 
+      price: product.price,
     });
   };
 
-const handleBuyNow = () => {
-  console.log("Buy now:", { 
-    product: product.title, 
-    weight: selectedWeight, 
-    quantity,
-    price: product.price 
-  });
-  setShowOrderModal(true);
-};
-
-
+  const handleBuyNow = () => {
+    console.log("Buy now:", {
+      product: product.title,
+      weight: selectedWeight,
+      quantity,
+      price: product.price,
+    });
+    setShowOrderModal(true);
+  };
 
   return (
     <section className="py-10 bg-white">
       <div className="container mx-auto px-4">
         {/* Breadcrumb */}
         <div className="mb-5 text-sm text-gray-500">
-          <a href="/" className="hover:text-black transition-colors">Home</a>
+          <a href="/" className="hover:text-black transition-colors">
+            Home
+          </a>
           <span className="mx-2">/</span>
           <span className="text-black font-medium">{product.title}</span>
         </div>
@@ -151,16 +177,24 @@ const handleBuyNow = () => {
                   priority={activeImage === 0}
                 />
               </div>
-              
+
               {/* Navigation Arrows */}
-              <button 
-                onClick={() => setActiveImage((prev) => (prev > 0 ? prev - 1 : images.length - 1))}
+              <button
+                onClick={() =>
+                  setActiveImage((prev) =>
+                    prev > 0 ? prev - 1 : images.length - 1
+                  )
+                }
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg border border-gray-200"
               >
                 <FaChevronLeft className="text-gray-700" />
               </button>
-              <button 
-                onClick={() => setActiveImage((prev) => (prev < images.length - 1 ? prev + 1 : 0))}
+              <button
+                onClick={() =>
+                  setActiveImage((prev) =>
+                    prev < images.length - 1 ? prev + 1 : 0
+                  )
+                }
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg border border-gray-200"
               >
                 <FaChevronRight className="text-gray-700" />
@@ -203,10 +237,8 @@ const handleBuyNow = () => {
             {/* Product Title with Weight */}
             <h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 mb-3">
               {product.title}
-              
-              <span className="text-xl text-gray-600">
-                 ({product.weight})
-              </span>
+
+              <span className="text-xl text-gray-600">({product.weight})</span>
             </h2>
 
             {/* Rating and Reviews */}
@@ -225,7 +257,8 @@ const handleBuyNow = () => {
                 ))}
               </div>
               <span className="text-gray-500 text-sm">
-                {product.reviews} customer review{product.reviews !== 1 ? 's' : ''}
+                {product.reviews} customer review
+                {product.reviews !== 1 ? "s" : ""}
               </span>
             </div>
 
@@ -245,11 +278,13 @@ const handleBuyNow = () => {
                   Save ₹{(product.originalPrice - product.price).toFixed(2)}
                 </span>
               </div>
-              <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                product.inStock
-                  ? "bg-blue-100 text-blue-800"
-                  : "bg-red-100 text-red-800"
-              }`}>
+              <span
+                className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                  product.inStock
+                    ? "bg-blue-100 text-blue-800"
+                    : "bg-red-100 text-red-800"
+                }`}
+              >
                 {product.inStock ? "In Stock" : "Out of Stock"}
               </span>
             </div>
@@ -263,7 +298,9 @@ const handleBuyNow = () => {
 
             {/* Quantity Selection (Weight/Variant) */}
             <div className="mb-8">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Quantity</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                Quantity
+              </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {weightOptions.map((option) => (
                   <button
@@ -278,7 +315,6 @@ const handleBuyNow = () => {
                     <div className="text-sm font-semibold text-gray-800 mb-1">
                       {option.weight}
                     </div>
-                 
                   </button>
                 ))}
               </div>
@@ -290,13 +326,10 @@ const handleBuyNow = () => {
                 <FaTag className="text-[#00652f]" />
                 Available offers
               </h3>
-              
+
               <div className="space-y-3">
                 {visibleOffers.map((offer) => (
-                  <div 
-                    key={offer.id} 
-                    className="transition-all"
-                  >
+                  <div key={offer.id} className="transition-all">
                     <div className="flex items-start gap-3">
                       <div className="flex-1">
                         <div className="flex items-center gap-1 mb-1">
@@ -304,8 +337,12 @@ const handleBuyNow = () => {
                             {offer.title}
                           </span>
                           <span className="text-gray-500 text-sm">•</span>
-                          <span className="text-gray-600 text-sm">{offer.description}</span>
-                          <button className={`text-xs font-medium ${offer.textColor} hover:underline`}>
+                          <span className="text-gray-600 text-sm">
+                            {offer.description}
+                          </span>
+                          <button
+                            className={`text-xs font-medium ${offer.textColor} hover:underline`}
+                          >
                             {offer.terms}
                           </button>
                         </div>
@@ -369,11 +406,27 @@ const handleBuyNow = () => {
                     <FiShoppingCart className="text-lg" />
                     Add to Cart
                   </button>
-                  
+
                   <button
                     onClick={handleBuyNow}
-                    className="cursor-pointer px-8 py-2.5 border-2 border-gray-900 text-gray-800 font-semibold rounded-lg hover:bg-gray-900 hover:text-white transition-colors"
+                    className="group cursor-pointer flex items-center gap-2 px-8 py-2.5 
+             border-2 border-gray-900 text-gray-800 font-semibold rounded-lg 
+             hover:bg-gray-900 hover:text-white transition-colors"
                   >
+                    <span className="relative w-4 h-4">
+                      <Image
+                        src={buynow}
+                        alt="Buy Now"
+                        fill
+                        className="
+        object-contain
+        scale-x-[-1]
+        transition
+        group-hover:brightness-0
+        group-hover:invert
+      "
+                      />
+                    </span>
                     Buy Now
                   </button>
                 </div>
@@ -384,9 +437,11 @@ const handleBuyNow = () => {
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <span className="font-medium">🚚 Free Delivery</span>
                   <span className="text-gray-400">•</span>
-                  <span>Delivery in 2-3 days</span>
+                  <span>Delivery in 2-3 Days</span>
                   <span className="text-gray-400">•</span>
-                  <span className="text-green-600 font-medium">Easy returns</span>
+                  <span className="text-green-600 font-medium">
+                    Easy Returns
+                  </span>
                 </div>
               </div>
             </div>
@@ -399,11 +454,15 @@ const handleBuyNow = () => {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-gray-500 ">Category:</span>
-                <span className="text-gray-900 font-medium">{product.category}</span>
+                <span className="text-gray-900 font-medium">
+                  {product.category}
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-gray-500">Tags:</span>
-                <span className="text-gray-900 font-medium">{product.tags.join(", ")}</span>
+                <span className="text-gray-900 font-medium">
+                  {product.tags.join(", ")}
+                </span>
               </div>
             </div>
 
@@ -414,14 +473,16 @@ const handleBuyNow = () => {
                   <div className="p-2 border border-gray-300 rounded-full group-hover:border-red-300 group-hover:bg-red-50 transition-colors">
                     <FaHeart className="text-lg" />
                   </div>
-                  <span className="text-sm font-medium">Add to wishlist</span>
+                  <span className="text-sm font-medium">Add to Wishlist</span>
                 </button>
-                
+
                 <button className="flex items-center gap-2 text-gray-600 hover:text-[#00652f] transition-colors group">
                   <div className="p-2 border border-gray-300 rounded-full group-hover:border-blue-300 group-hover:bg-blue-50 transition-colors">
                     <FaShareAlt className="text-lg" />
                   </div>
-                  <span className="text-sm font-medium">Share This Product</span>
+                  <span className="text-sm font-medium">
+                    Share This Product
+                  </span>
                 </button>
               </div>
             </div>
@@ -429,10 +490,10 @@ const handleBuyNow = () => {
         </div>
       </div>
 
-          <PlaceorderModal 
-      isOpen={showOrderModal} 
-      onClose={() => setShowOrderModal(false)} 
-    />
+      <PlaceorderModal
+        isOpen={showOrderModal}
+        onClose={() => setShowOrderModal(false)}
+      />
     </section>
   );
 }

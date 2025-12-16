@@ -9,7 +9,7 @@ export default function ProductDescription() {
 
   const tabs = [
     { id: "description", label: "Description" },
-    { id: "additional", label: "Additional information" },
+    { id: "additional", label: "Additional Information" },
     { id: "reviews", label: "Reviews (1)" },
   ];
 
@@ -17,11 +17,12 @@ export default function ProductDescription() {
     {
       id: 1,
       author: "admin",
-      date: "February 19, 2021",
+      date: "February 19, 2024",
       rating: 5,
-      title: "I review for Drive Me Glazy Lip Gloss",
-      content: "Seq perspicials undo omnis iste natus error sit voluptatem accusantium doloremque laudentum."
-    }
+      title: "My review for the Drive Me Face Mask.",
+      content:
+        "Refreshing and gentle on the skin. Leaves my face feeling clean, soft, and hydrated. Really good quality.",
+    },
   ];
 
   const handleStarClick = (starIndex: number) => {
@@ -63,13 +64,27 @@ export default function ProductDescription() {
           {/* Description Tab */}
           {activeTab === "description" && (
             <div className="space-y-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Description</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                Description
+              </h2>
               <div className="prose max-w-none">
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  <strong>Quisque varius diam vel metus mattis, id aliquam diam rhoncus.</strong> Proin vitae magna in dui finibus malesuada et at nulla. Morbi elit ex, viverra vitae ante vel, blandit feugiat ligula. Fusce fermentum laculis nibh, at sodales leo maximus a. Nullam ultricies sodales nunc, in pellentesque lorem mattis quis. Cras imperdiet est in nunc tristique lacinia. Nullam aliquam mauris eu accumsan tincidunt. Suspendisse velit ex, aliquet vel ornare vel, dignissim a tortor.
+                <p className="text-gray-600 leading-relaxed mb-4 text-sm">
+                  <strong>POWER OF MORINGA FOR SKIN HEALTH:</strong>
+                  Ahroomi Face Mask is made with pure moringa powder, packed
+                  with skin-loving vitamins like A, C, and E. These nutrients
+                  help cleanse deeply, soothe dull or tired skin.
                 </p>
-                <p className="text-gray-600 leading-relaxed">
-                  <strong>Morbi ut sapien vitae odio accumsan gravida.</strong> Morbi vitae erat auctor, eleifend nunc a, lobortis neque. Praesent aliquam dignissim viverra. Maceenas lacus odio, feugiat eu nunc sit amet, maximus sagittis dolor. Vivamus nisi sapien, elementum sit amet eros sit amet, ultricies cursus ipsum. Sed consequat luctus ligula. Curabitur laoreet rhoncus blandit. Aenean vel diam ut arcu pharetra dignissim ut sed leo. Vivamus faucibus, ipsum in vestibulum vulputate, lorem orci convallis quam, sit amet consequat nulla felis pharetra lacus. Duis semper erat mauris, sed egestas purus commodo vel.
+                <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                  <strong>DE-TANS & CLEARS BLACKHEADS/WHITEHEADS:</strong>
+                  Formulated with natural ingredients like oats, turmeric and
+                  sandalwood, this mask gently removes tan, blackheads, and
+                  whiteheads while deeply cleansing the pores.
+                </p>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  <strong>INSTANT GLOW & NOURISHMENT:</strong>
+                  With ingredients like turmeric, red lentils, and sandalwood,
+                  the face pack brightens dull skin and adds instant glow. It
+                  also helps tighten the skin.
                 </p>
               </div>
             </div>
@@ -78,7 +93,9 @@ export default function ProductDescription() {
           {/* Additional Information Tab */}
           {activeTab === "additional" && (
             <div className="space-y-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">Additional information</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                Additional Information
+              </h2>
               <div className="overflow-hidden border border-gray-200 rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200">
                   <tbody className="divide-y divide-gray-200">
@@ -86,9 +103,7 @@ export default function ProductDescription() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-gray-50 w-1/3">
                         Weight
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
-                        N/A
-                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-600">N/A</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-gray-50">
@@ -96,7 +111,7 @@ export default function ProductDescription() {
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
                         <div className="flex flex-wrap gap-2">
-                          {['Black', 'Blue', 'Orange', 'Red'].map((color) => (
+                          {["Black", "Blue", "Orange", "Red"].map((color) => (
                             <span
                               key={color}
                               className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
@@ -116,43 +131,52 @@ export default function ProductDescription() {
           {/* Reviews Tab */}
           {activeTab === "reviews" && (
             <div className="space-y-8">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">Reviews (1)</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                Reviews (1)
+              </h2>
 
               {/* Existing Reviews */}
               <div className="space-y-6">
                 {reviews.map((review) => (
-                  <div key={review.id} className="border-b border-gray-200 pb-6">
+                  <div
+                    key={review.id}
+                    className="border-b border-gray-200 pb-6"
+                  >
                     <div className="flex items-start justify-between mb-3">
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900">{review.title}</h3>
+                        <h3 className="text-base font-semibold text-gray-900">
+                          {review.title}
+                        </h3>
                         <div className="flex items-center gap-4 mt-1">
                           <div className="flex items-center">
                             {[...Array(5)].map((_, i) => (
                               <span key={i} className="text-yellow-500">
-                                {i < review.rating ? (
-                                  <FaStar />
-                                ) : (
-                                  <FaRegStar />
-                                )}
+                                {i < review.rating ? <FaStar /> : <FaRegStar />}
                               </span>
                             ))}
                           </div>
                           <div className="text-sm text-gray-500">
-                            <span className="font-medium">{review.author}</span> – {review.date}
+                            <span className="font-medium">{review.author}</span>{" "}
+                            – {review.date}
                           </div>
                         </div>
                       </div>
                     </div>
-                    <p className="text-gray-600 leading-relaxed">{review.content}</p>
+                    <p className="text-gray-600 leading-relaxed">
+                      {review.content}
+                    </p>
                   </div>
                 ))}
               </div>
 
               {/* Add Review Form */}
               <div className="space-y-6">
-                <h3 className="text-xl font-semibold text-gray-900">Add a review</h3>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Add a review
+                </h3>
                 <p className="text-gray-600 text-sm">
-                  Your email address will not be published. Required fields are marked *
+                  Your email address will not be published. Required fields are
+                  marked *
                 </p>
 
                 <form className="space-y-6">
@@ -229,8 +253,12 @@ export default function ProductDescription() {
                         className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                       />
                     </div>
-                    <label htmlFor="save-info" className="ml-2 text-sm text-gray-600">
-                      Save my name, email, and website in this browser for the next time I comment.
+                    <label
+                      htmlFor="save-info"
+                      className="ml-2 text-sm text-gray-600"
+                    >
+                      Save my name, email, and website in this browser for the
+                      next time I comment.
                     </label>
                   </div>
 

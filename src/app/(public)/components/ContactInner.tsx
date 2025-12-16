@@ -20,7 +20,7 @@ const ContactInner = () => {
               className="absolute -top-10 -left-10 w-[340px] opacity-[0.15] pointer-events-none select-none"
             />
 
-            <div className="relative z-10">
+            <div className="relative ">
               {/* Accent Line */}
               <div className="absolute -left-6 top-6 w-[3px] h-20 bg-linear-to-b from-transparent to-[#22a6dd] opacity-60 hidden lg:block" />
 
@@ -116,11 +116,11 @@ const ContactInner = () => {
             {/* Decorative element */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-[#22a6dd]/10 to-transparent rounded-bl-full"></div>
             
-            <h3 className="text-2xl font-serif text-gray-800 mb-8 relative z-10">
+            <h3 className="text-2xl font-serif text-gray-800 mb-8 relative">
               Get in Touch
             </h3>
             
-            <form className="space-y-6 relative z-10">
+            <form className="space-y-6 relative">
               <div className="relative">
                 <input
                   type="text"

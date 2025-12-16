@@ -40,9 +40,9 @@ export default function Newsletter() {
           />
 
          
-          <div className="text-center relative z-10">
+          <div className="text-center relative ">
             <h2 className="text-2xl md:text-3xl font-bold text-black leading-snug max-w-3xl mx-auto">
-              Sign Up To Our Newsletter For All The <br />
+              Sign Up to Our Newsletter For All The <br />
               Latest Offer & Discounts.
             </h2>
 

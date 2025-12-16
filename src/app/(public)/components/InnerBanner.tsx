@@ -22,7 +22,7 @@ export default function InnerBanner({ title, image }: InnerBannerProps) {
       </div>
      <div className="absolute inset-0 bg-black/10"></div>
       {/* Centered Title */}
-      <div className="relative z-10 flex items-center justify-center h-full">
+      <div className="relative flex items-center justify-center h-full">
         <h2 className="text-white font-[initial] text-4xl md:text-5xl font-bold drop-shadow-xl tracking-wide animate-fadeIn">
           {title}
         </h2>

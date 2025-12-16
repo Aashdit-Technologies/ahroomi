@@ -9,7 +9,10 @@ import { CiSearch, CiShoppingCart, CiHeart, CiUser } from "react-icons/ci";
 import Link from "next/link";
 import Image from "next/image";
 import ahroomiLogo from "../../../../public/assets/images/ahroomoLogo.png";
-import Offcanvas from "@/components/Offcanvas"; // Added import for Offcanvas
+import plix1 from "../../../../public/assets/images/plix1.avif";
+import plix2 from "../../../../public/assets/images/plix2.avif";
+import Offcanvas from "@/components/Offcanvas"; 
+import OffcanvasCart from "./OffcanvasCart";
 
 export default function HeaderNav() {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
@@ -46,7 +49,7 @@ export default function HeaderNav() {
   return (
     <>
       <header
-        className={`bg-white w-full z-50 transition-all duration-300 ${
+        className={`bg-white w-full z-10 transition-all duration-300 ${
           isSticky
             ? "fixed top-0 shadow-xl backdrop-blur-sm"
             : "relative shadow-none"
@@ -94,7 +97,7 @@ export default function HeaderNav() {
                   <div className="absolute left-1/2 transform -translate-x-1/2 pt-2 w-screen max-w-xl z-50 bg-white">
                     <div className="shadow-2xl rounded-lg overflow-hidden megamenu">
                       <div className="grid grid-cols-2 gap-8 p-8">
-                        <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-4 min-w-2xs">
                           {megaMenuItems.map((column, colIndex) => (
                             <div key={colIndex} className="space-y-3">
                               {column.map((item, itemIndex) => (
@@ -162,7 +165,7 @@ export default function HeaderNav() {
               >
                 <CiShoppingCart className="w-6 h-6" />
                 <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                  0
+                  2
                 </span>
               </button>
 
@@ -174,27 +177,7 @@ export default function HeaderNav() {
         </div>
       </header>
 
-      {/* Cart Offcanvas */}
-      <Offcanvas 
-        isOpen={isCartOpen} 
-        onClose={() => setIsCartOpen(false)}
-        title="Your Cart"
-      >
-        <div className="flex flex-col items-center justify-center h-full text-center">
-          <CiShoppingCart className="w-16 h-16 text-gray-300 mb-4" />
-          <h3 className="text-xl font-semibold mb-2">Your cart is empty</h3>
-          <p className="text-gray-500 mb-6">
-            Looks like you haven't added any items to your cart yet.
-          </p>
-          <Link 
-            href="/shop" 
-            className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition"
-            onClick={() => setIsCartOpen(false)}
-          >
-            Continue Shopping
-          </Link>
-        </div>
-      </Offcanvas>
+  <OffcanvasCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
 }

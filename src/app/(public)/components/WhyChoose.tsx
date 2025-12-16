@@ -17,7 +17,7 @@ export default function WhyChoose() {
             <Image src={ch1} alt="Delivery" width={75} height={75} />
             <div className="text-center">
               <h4 className="font-semibold text-lg text-black">Cruelty Free</h4>
-              <p className="text-sm text-gray-500">Never tested on animals.</p>
+              <p className="text-sm text-gray-500">Never tested on animals</p>
             </div>
           </div>
 
@@ -27,7 +27,7 @@ export default function WhyChoose() {
             <div className="text-center">
               <h4 className="font-semibold text-lg text-black">No Parabens</h4>
               <p className="text-sm text-gray-500">
-                Free from harsh preservatives.
+                Free from harsh preservatives
               </p>
             </div>
           </div>
@@ -37,7 +37,7 @@ export default function WhyChoose() {
             <Image src={ch3} alt="Discount" width={75} height={75} />
             <div className="text-center">
               <h4 className="font-semibold text-lg text-black">No Sulphate</h4>
-              <p className="text-sm text-gray-500">Gentle on skin & hair.</p>
+              <p className="text-sm text-gray-500">Gentle on skin & hair</p>
             </div>
           </div>
 
@@ -47,7 +47,7 @@ export default function WhyChoose() {
             <div className="text-center">
               <h4 className="font-semibold text-lg text-black">Vegan</h4>
               <p className="text-sm text-gray-500">
-                Made with plant-based ingredients.
+                Made with plant-based ingredients
               </p>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function WhyChoose() {
                 No Phthalates
               </h4>
               <p className="text-sm text-gray-500">
-                Safe & toxin-free formulation.
+                Safe & toxin-free formulation
               </p>
             </div>
           </div>

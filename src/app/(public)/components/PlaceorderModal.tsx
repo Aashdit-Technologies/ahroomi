@@ -16,6 +16,7 @@ import cartImg from "../../../../public/assets/images/cartImg.jpg";
 import gokwik from "../../../../public/assets/images/gokwik.svg";
 import india from "../../../../public/assets/images/india.png";
 
+
 interface PlaceorderModalProps {
   isOpen: boolean;
   onClose: () => void;

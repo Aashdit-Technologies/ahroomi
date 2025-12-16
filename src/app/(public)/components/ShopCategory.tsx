@@ -46,7 +46,7 @@ const ShopCategory = () => {
                        href={`/productlist`} passHref
                         className="px-5 py-2 bg-white text-sm font-medium rounded-full shadow hover:bg-gray-100 transition"
                       >
-                        View Collection
+                        View Collections
                       </Link>
                     </div>
 

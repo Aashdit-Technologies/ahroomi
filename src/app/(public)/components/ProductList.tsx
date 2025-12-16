@@ -65,7 +65,7 @@ export default function ProductList() {
 
       <div className="relative h-2 bg-[#cdd9e4]/60 rounded-full mb-1">
         <div
-          className="absolute h-full bg-gradient-to-r from-[#cdd9e4] to-[#22a6dd] rounded-full"
+          className="absolute h-full bg-linear-to-r from-[#cdd9e4] to-[#22a6dd] rounded-full"
           style={{ width: "60%" }}
         />
         <div className="absolute w-4 h-4 bg-white border-2 border-[#22a6dd] rounded-full -top-1 left-[60%] -translate-x-1/2 shadow-md" />
@@ -209,7 +209,7 @@ export default function ProductList() {
   </div>
 
   {/* ====================== PROMO CARD ====================== */}
-  <div className="bg-gradient-to-br from-[#22a6dd] to-[#1d2a35] rounded-2xl p-6 text-white shadow-md">
+  <div className="bg-linear-to-br from-[#22a6dd] to-[#1d2a35] rounded-2xl p-6 text-white shadow-md">
     <div className="text-center">
       <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
         <span className="text-2xl">🎁</span>
