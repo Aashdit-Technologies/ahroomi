@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, useContext } from "react";
 import {
   MdDashboard,
   MdCategory,
@@ -27,9 +27,10 @@ import {
 } from "react-icons/md";
 import { FaBoxes, FaPalette, FaTags, FaPercent } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { menuService, MenuItem } from "@/services/menu.service";
+import { useMenuContext } from "@/contexts/MenuContext";
 
 interface SharedSidebarProps {
   isOpen: boolean;
@@ -66,36 +67,42 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 const SharedSidebar: FC<SharedSidebarProps> = ({ isOpen, toggle, userRole }) => {
+  const router = useRouter();
   const pathname = usePathname();
-  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const { menus, fetchMenus } = useMenuContext();
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
 
   // Fetch menu items based on user role
   useEffect(() => {
-    const fetchMenus = async () => {
-      try {
-        const response = await menuService.getMenusByRole(userRole);
-        if (response.outcome) {
-          setMenuItems(response.data);
-          // Initialize expanded items state for items with children
-          const initialExpanded: Record<string, boolean> = {};
-          response.data.forEach(item => {
-            if (item.children && item.children.length > 0) {
-              // Expand by default if current path is under this menu item
-              initialExpanded[item._id] = pathname.startsWith(item.link);
-            }
-          });
-          setExpandedItems(initialExpanded);
-        }
-      } catch (error) {
-        console.error("Error fetching menus:", error);
-        // Fallback to static menu if API fails
-        setMenuItems(getStaticMenuItems(userRole));
-      }
-    };
+    fetchMenus(userRole);
+  }, [userRole, fetchMenus]);
 
-    fetchMenus();
-  }, [userRole, pathname]);
+  // Update expanded items when menus change
+  useEffect(() => {
+    const initialExpanded: Record<string, boolean> = {};
+    (menus[userRole] || []).forEach(item => {
+      if (item.children && item.children.length > 0) {
+        // Expand by default if current path is under this menu item
+        initialExpanded[item._id] = isPathUnderMenu(item, pathname);
+      }
+    });
+    setExpandedItems(initialExpanded);
+  }, [menus, userRole, pathname]);
+
+  // Check if current path is under a menu item or its children
+  const isPathUnderMenu = (menu: MenuItem, currentPath: string): boolean => {
+    // Check if current path matches this menu item
+    if (currentPath === menu.link) {
+      return true;
+    }
+    
+    // Check if current path matches any child menu items
+    if (menu.children && menu.children.length > 0) {
+      return menu.children.some(child => isPathUnderMenu(child, currentPath));
+    }
+    
+    return false;
+  };
 
   // Toggle expanded state for a menu item
   const toggleExpand = (itemId: string) => {
@@ -103,6 +110,20 @@ const SharedSidebar: FC<SharedSidebarProps> = ({ isOpen, toggle, userRole }) => 
       ...prev,
       [itemId]: !prev[itemId]
     }));
+  };
+
+  // Handle submenu click - navigate to parent menu if it has a link
+  const handleSubmenuClick = (parentMenu: MenuItem, submenu: MenuItem) => {
+    // If parent menu has a link, navigate to it
+    if (parentMenu.link && parentMenu.link !== '#') {
+      router.push(parentMenu.link);
+    } else {
+      // Otherwise, just expand the parent menu
+      setExpandedItems(prev => ({
+        ...prev,
+        [parentMenu._id]: true
+      }));
+    }
   };
 
   // Get static menu items as fallback
@@ -154,7 +175,7 @@ const SharedSidebar: FC<SharedSidebarProps> = ({ isOpen, toggle, userRole }) => 
 
   // Render a single menu item
   const renderMenuItem = (item: MenuItem) => {
-    const isActive = pathname.startsWith(item.link);
+    const isActive = isPathUnderMenu(item, pathname);
     const IconComponent = item.icon && iconMap[item.icon] ? iconMap[item.icon] : MdCategory;
     const hasChildren = item.children && item.children.length > 0;
     const isExpanded = expandedItems[item._id];
@@ -246,17 +267,17 @@ const SharedSidebar: FC<SharedSidebarProps> = ({ isOpen, toggle, userRole }) => 
             {item.children!.map((subItem) => {
               const isSubActive = pathname === subItem.link;
               return (
-                <Link
+                <div
                   key={subItem._id}
-                  href={subItem.link}
-                  className={`block py-2 px-3 rounded transition-colors ${
+                  className={`block py-2 px-3 rounded transition-colors cursor-pointer ${
                     isSubActive
                       ? "bg-green-100 text-green-800 font-medium"
                       : "text-gray-600 hover:bg-gray-100"
                   }`}
+                  onClick={() => handleSubmenuClick(item, subItem)}
                 >
                   {subItem.name}
-                </Link>
+                </div>
               );
             })}
           </div>
@@ -287,7 +308,7 @@ const SharedSidebar: FC<SharedSidebarProps> = ({ isOpen, toggle, userRole }) => 
 
       {/* MENU LIST */}
       <nav className="p-3 overflow-y-auto h-[calc(100%-4rem)] space-y-2">
-        {menuItems.map(renderMenuItem)}
+        {(menus[userRole] || []).map(renderMenuItem)}
       </nav>
 
       {/* FOOTER */}

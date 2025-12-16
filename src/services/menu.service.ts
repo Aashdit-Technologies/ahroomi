@@ -48,12 +48,38 @@ export const menuService = {
     }
   },
 
+  createMenuEncrypted: async (encryptedData: string, iv: string): Promise<StandardResponse<MenuItem>> => {
+    try {
+      const response = await apiClient.post<StandardResponse<MenuItem>>('/menu', {
+        encryptedData,
+        iv
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error creating menu with encryption:', error);
+      throw error;
+    }
+  },
+
   updateMenu: async (id: string, data: Partial<MenuItem>): Promise<StandardResponse<MenuItem>> => {
     try {
       const response = await apiClient.put<StandardResponse<MenuItem>>(`/menu/${id}`, data);
       return response.data;
     } catch (error) {
       console.error('Error updating menu:', error);
+      throw error;
+    }
+  },
+
+  updateMenuEncrypted: async (id: string, encryptedData: string, iv: string): Promise<StandardResponse<MenuItem>> => {
+    try {
+      const response = await apiClient.put<StandardResponse<MenuItem>>(`/menu/${id}`, {
+        encryptedData,
+        iv
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error updating menu with encryption:', error);
       throw error;
     }
   },
