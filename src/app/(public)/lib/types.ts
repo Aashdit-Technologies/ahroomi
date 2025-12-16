@@ -23,11 +23,34 @@ export interface CategoryProduct {
   stock?: number;
 }
 
-export interface ParentCategory extends CategoryProduct {
-  hoverImage: string;
-}
 
+// src/lib/types.ts (optional, or just in InstagramFeed.tsx)
 export interface InstagramPost {
   id: string;
   image: string;
 }
+
+export interface ParentCategory {
+  id: string;
+  title: string;
+  slug: string;
+  price: number;
+  image: string;
+  hoverImage: string;  // ✅ FIXED MISSING PROPERTY
+  discount?: number;
+  featured?: boolean;
+
+
+}
+export interface ShopItem {
+  id: string;
+  title: string;
+  price: number;
+  discount?: number;
+  category: string;
+  image: string;
+  featured?: boolean;
+
+
+}
+
